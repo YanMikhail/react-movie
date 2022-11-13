@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, NavLink, Outlet} from "react-router-dom";
 import BrandLogo from '../../assets/images/react-movie-logo.svg';
-import s from './Layout.module.scss'
+import s from './Layout.module.css'
 
 const Layout = () => {
     return (
