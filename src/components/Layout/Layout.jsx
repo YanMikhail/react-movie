@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, NavLink, Outlet} from "react-router-dom";
 import BrandLogo from '../../assets/images/react-movie-logo.svg';
 import s from './Layout.module.css'
+import {Container} from "@mui/material";
 
 const Layout = () => {
     return (
@@ -27,8 +28,10 @@ const Layout = () => {
                 </ul>
             </nav>
         </header>
-        <main className={s.container}>
-            <Outlet />
+        <main>
+            <Container>
+                <Outlet />
+            </Container>
         </main>
         <footer className={s.footer}>
             <div className="footer__content container">

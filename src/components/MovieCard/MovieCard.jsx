@@ -1,16 +1,23 @@
 import React from 'react';
 import s from './MovieCard.module.css'
-const MovieCard = (props) => {
+import {Link} from "react-router-dom";
+import Like from "../ui/Like/Like";
+import {useDispatch} from "react-redux";
+import {addFavourite} from "../../store/favouriteSlice";
+const MovieCard = ({movie}) => {
     return (
         <div className={s.card}>
-            <img
-                src={`https://image.tmdb.org/t/p/w200/${props.movie.poster_path}`}
-                alt={props.movie.title}
-            />
-            <div className={s.description}>
-                <p className={s.title}>{props.movie.title}</p>
-                <p className={s.release}>{props.movie.release_date}</p>
-            </div>
+            <Link to={`/movie/${movie.id}`}>
+                <img
+                    src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                    alt={movie.title}
+                />
+                <div className={s.description}>
+                    <p className={s.title}>{movie.title}</p>
+                    <p className={s.release}>{movie.release_date}</p>
+                </div>
+            </Link>
+            <Like className={s.favourite} id={movie.id}/>
         </div>
     );
 };

@@ -16,9 +16,33 @@ export const movieApi = createApi({
             },
             contentType: "application/json",
         }),
+        }),
+        getMoviesByQuery: build.query({
+            query: (query) => ({
+                url: 'search/movie?',
+                method: 'GET',
+                params: {
+                    api_key: '483698be2836c105d00456d472854450',
+                    query,
+                },
+                contentType: "application/json",
+            }),
+            transformResponse(response) {
+                return response.results
+            }
+        }),
+        getMovieById: build.query({
+            query: (id) => ({
+                url: `movie/${id}?`,
+                method: 'GET',
+                params: {
+                    api_key: '483698be2836c105d00456d472854450',
+                },
+                contentType: "application/json",
+            })
         })
     })
 
 })
 
-export const {useGetAllMoviesQuery} = movieApi
+export const {useGetAllMoviesQuery, useGetMoviesByQueryQuery, useGetMovieByIdQuery} = movieApi
