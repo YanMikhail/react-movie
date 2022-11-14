@@ -1,25 +1,21 @@
 import React from 'react';
-import {useGetAllMoviesQuery, useGetMoviesByQueryQuery, useGetMovieByIdQuery} from "../../store/movieApi";
+import {useGetAllMoviesQuery, useGetMoviesByQueryQuery} from "../../store/movieApi";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import s from './HomePage.module.css'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link as NavLink } from "react-router-dom";
 import {
     Container,
     Pagination,
-    PaginationItem,
     TextField,
-    Stack,
-    Link
 } from "@mui/material";
 import {useDebounce} from "../../hooks/useDebounce";
 
 
-const HomePage = (props) => {
+const HomePage = () => {
     const [page, setPage] = useState(1)
     const [search, setSearch] = useState('')
     const debounced = useDebounce(search)
-
     const {isLoading, isError, data } = useGetAllMoviesQuery(page)
     const {data: searchData} = useGetMoviesByQueryQuery(debounced, {
         skip: debounced.length < 2
