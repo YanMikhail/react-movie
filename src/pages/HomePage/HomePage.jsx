@@ -1,6 +1,6 @@
 import React from 'react';
 import {useGetAllMoviesQuery, useGetMoviesByQueryQuery} from "../../store/movieApi";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import MovieCards from "../../components/MovieCards/MovieCards";
 import s from './HomePage.module.css'
 import { useState } from "react";
 import { Link as NavLink } from "react-router-dom";
@@ -44,7 +44,7 @@ const HomePage = () => {
             { isLoading && <p className="text-center">Loading...</p> }
             <div className={s.cards}>
                 {data?.results.map(movie => (
-                    <MovieCard movie={movie} key={movie.id}/>
+                    <MovieCards movie={movie} key={movie.id}/>
                 ))}
             </div>
             <div className={s.pagination}>

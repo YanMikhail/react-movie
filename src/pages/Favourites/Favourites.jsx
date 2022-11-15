@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import FavouriteCards from "../../components/FavouriteCards/FavouriteCards";
 import s from './Favourites.module.css'
 
 const Favourites = () => {
@@ -10,7 +10,7 @@ const Favourites = () => {
     return (
             <ul className={s.cards}>
                 { favourites.map(movie => (
-                    <MovieCard key={movie.id} movie={movie}/>
+                    <FavouriteCards key={movie.id} movie={movie}/>
                 )) }
             </ul>
     );
