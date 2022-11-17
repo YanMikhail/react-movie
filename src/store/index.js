@@ -2,6 +2,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import {movieApi} from "./movieApi";
 import {favourite} from "./favouriteSlice";
 import {user} from "./userSlice";
+import {localStorageMiddleware} from "./middleware/localStorageMiddleware";
 
 
 export const store = configureStore({
@@ -10,5 +11,5 @@ export const store = configureStore({
         favourite,
         user,
     },
-    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(movieApi.middleware)
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(movieApi.middleware, localStorageMiddleware)
 })

@@ -6,11 +6,13 @@ import {addFavourite, removeFavourite} from "../../store/favouriteSlice";
 import s from './MoviePage.module.css'
 
 
+
 const MoviePage = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
     const {favourites} = useSelector(state => state.favourite)
     const [isFav, setIsFav] = useState(favourites.find(f => f.id === +id))
+
     const {data: movie, isLoading, isError} = useGetMovieByIdQuery(id)
     const addToFavourite = (event) => {
         event.preventDefault()

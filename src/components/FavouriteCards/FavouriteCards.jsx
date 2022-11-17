@@ -5,8 +5,10 @@ import FilmCard from "../ui/FilmCard/FilmCard";
 import redHeart from "../../assets/images/red-heart.png";
 
 
+
 const FavouriteCards = ({movie}) => {
     const dispatch = useDispatch()
+
     const removeFromFavourite = (event) => {
         event.preventDefault()
         dispatch(removeFavourite(movie))

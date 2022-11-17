@@ -7,6 +7,7 @@ import Favourites from "./pages/Favourites/Favourites";
 import History from "./pages/History/History";
 import MoviePage from "./pages/MoviePage/MoviePage";
 import Layout from "./components/Layout/Layout";
+import {RequireAuth} from "./hoc/RequireAuth";
 
 
 function App() {
@@ -17,8 +18,16 @@ function App() {
           <Route index element={<HomePage/>}/>
           <Route path='login' element={<LoginPage/>}/>
           <Route path='register' element={<RegisterPage/>}/>
-          <Route path='favourites' element={<Favourites/>}/>
-          <Route path='history' element={<History/>}/>
+          <Route path='favourites' element={
+            <RequireAuth>
+              <Favourites/>
+            </RequireAuth>
+          }/>
+          <Route path='history' element={
+            <RequireAuth>
+              <History/>
+            </RequireAuth>
+          }/>
           <Route path='/movie/:id' element={<MoviePage/>}/>
         </Route>
       </Routes>

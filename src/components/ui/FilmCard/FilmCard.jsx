@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 
 
 const FilmCard = ({movie, likeHandler, like}) => {
+
     return (
         <div className={s.card}>
             <Link to={`/movie/${movie.id}`}>

@@ -1,9 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {FAV} from "../utils/keyLS";
 
-const LS_FAV_KEY = 'fav'
 
 const initialState = {
-    favourites: JSON.parse(localStorage.getItem(LS_FAV_KEY) ?? '[]')
+    favourites: JSON.parse(localStorage.getItem(FAV) || '[]')
 }
 
 export const favouriteSlice = createSlice({
@@ -12,11 +12,9 @@ export const favouriteSlice = createSlice({
     reducers: {
         addFavourite(state, action) {
             state.favourites.push(action.payload)
-            localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites))
         },
         removeFavourite(state, action) {
             state.favourites = state.favourites.filter(movie => movie.id !== action.payload.id)
-            localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites))
         }
     }
 })
