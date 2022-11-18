@@ -1,9 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {FAV} from "../utils/keyLS";
+import { FavouritesKey} from "../utils/keyLS";
 
-
+const user = FavouritesKey()
 const initialState = {
-    favourites: JSON.parse(localStorage.getItem(FAV) || '[]')
+    favourites: JSON.parse(localStorage.getItem(user) || '[]')
 }
 
 export const favouriteSlice = createSlice({

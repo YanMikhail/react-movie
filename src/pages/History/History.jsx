@@ -5,7 +5,7 @@ const History = () => {
 
 
     return (
-        <p>History</p>
+        <h2 style={{textAlign: 'center'}}>Search history is still empty</h2>
     )
 };
 

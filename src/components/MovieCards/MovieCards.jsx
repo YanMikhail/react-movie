@@ -9,12 +9,14 @@ import {useNavigate} from "react-router-dom";
 
 
 
+
 const MovieCards = ({movie}) => {
     const dispatch = useDispatch()
     const {favourites} = useSelector(state => state.favourite)
     const [isFav, setIsFav] = useState(favourites.find(f => f.id === movie.id))
     const navigate = useNavigate()
     const {isAuth} = useAuth()
+
     const addToFavourite = (event) => {
         event.preventDefault()
         if(!isAuth) return navigate('/login')

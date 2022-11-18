@@ -5,11 +5,12 @@ import s from './HomePage.module.css'
 import { useState } from "react";
 import { Link as NavLink } from "react-router-dom";
 import {
-    Container,
+    CircularProgress,
     Pagination,
     TextField,
 } from "@mui/material";
 import {useDebounce} from "../../hooks/useDebounce";
+
 
 
 const HomePage = () => {
@@ -23,26 +24,26 @@ const HomePage = () => {
 
 
     return (
-        <Container sx={{marginTop: 5}} >
+        <>
             <div className={s.search}>
-                <TextField
-                    fullWidth
-                    label="Search"
-                    value={search}
-                    onChange={(event) => setSearch(event.target.value)}
-                />
-                {searchData && <div className={s.dropdown}>
-                    <ul >
-                        {searchData?.map(movie => (
-                            <NavLink key={movie.id}  to={`/movie/${movie.id}`}>
-                                <li className={s.movies}>{movie.title}</li>
-                            </NavLink>
-                        ))}
-                    </ul>
-                </div>}
-            </div>
-            { isLoading && <p className="text-center">Loading...</p> }
+            <TextField
+                fullWidth
+                label="Search"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+            />
+            {searchData && <div className={s.dropdown}>
+                <ul >
+                    {searchData?.map(movie => (
+                        <NavLink key={movie.id}  to={`/movie/${movie.id}`}>
+                            <li className={s.movies}>{movie.title}</li>
+                        </NavLink>
+                    ))}
+                </ul>
+            </div>}
+        </div>
             <div className={s.cards}>
+                { isLoading && <CircularProgress sx={{mx: 'auto' }}/> }
                 {data?.results.map(movie => (
                     <MovieCards movie={movie} key={movie.id}/>
                 ))}
@@ -57,7 +58,7 @@ const HomePage = () => {
                     onChange={(_, num) => setPage(num)}
                 />
             </div>
-        </Container>
+        </>
     );
 };
 

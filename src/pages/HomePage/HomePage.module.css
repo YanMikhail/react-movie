@@ -1,9 +1,12 @@
+
 .cards {
     display: flex;
     justify-content: space-between;
     gap: 40px;
     flex-wrap: wrap;
     padding-top: 40px;
+    flex-shrink: 1;
+    min-height: 400px;
 }
 .pagination {
     display: flex;
@@ -11,6 +14,7 @@
 }
 .search {
     position: relative;
+    margin-top: 30px;
 }
 .dropdown {
     background: white;

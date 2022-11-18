@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import propTypes from 'prop-types'
 import s from './FilmCard.module.css'
 import {Link} from "react-router-dom";
+import {ThemeContext} from "../../../store/themeContext";
 
 
 
 const FilmCard = ({movie, likeHandler, like}) => {
-
+    const {dark} = useContext(ThemeContext)
     return (
         <div className={s.card}>
             <Link to={`/movie/${movie.id}`}>
@@ -28,5 +30,11 @@ const FilmCard = ({movie, likeHandler, like}) => {
         </div>
     );
 };
+
+FilmCard.propTypes = {
+    movie: propTypes.object,
+    likeHandler: propTypes.func,
+    like: propTypes.string
+}
 
 export default FilmCard;

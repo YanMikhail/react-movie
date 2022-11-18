@@ -1,9 +1,9 @@
-function FavouritesKey() {
+export function FavouritesKey() {
     const user = JSON.parse(localStorage.getItem('currUser'))
-    if (user) {
+    if (user?.email) {
         return 'fav' + user.email;
     }
 }
 
 
-export const FAV = FavouritesKey()
+

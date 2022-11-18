@@ -1,21 +1,25 @@
 import React, {useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useGetMovieByIdQuery} from "../../store/movieApi";
 import {useDispatch, useSelector} from "react-redux";
 import {addFavourite, removeFavourite} from "../../store/favouriteSlice";
 import s from './MoviePage.module.css'
+import {useAuth} from "../../hooks/useAuth";
 
 
 
 const MoviePage = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const {isAuth} = useAuth()
     const {favourites} = useSelector(state => state.favourite)
     const [isFav, setIsFav] = useState(favourites.find(f => f.id === +id))
 
     const {data: movie, isLoading, isError} = useGetMovieByIdQuery(id)
     const addToFavourite = (event) => {
         event.preventDefault()
+        if(!isAuth) return navigate('/login')
         dispatch(addFavourite(movie))
         setIsFav(true)
     }
