@@ -1,0 +1,13 @@
+.item {
+    margin-bottom: 20px;
+}
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.request {
+    font-weight: bold;
+}
+.link {
+    color: darkviolet;
+}

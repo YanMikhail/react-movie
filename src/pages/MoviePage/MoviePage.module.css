@@ -1,5 +1,13 @@
-.card {
+
+.blue {
+    background: rgb(3, 37, 65);
+}
+
+.dark {
     background: #1A1A1D;
+}
+.card {
+
     border-radius: 30px;
     color: white;
     min-height: 600px;
@@ -9,6 +17,7 @@
     gap: 2rem;
     position: relative;
 }
+
 .poster {
     max-height: 400px;
     border-radius: 30px;

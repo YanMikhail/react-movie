@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Container, TextField} from "@mui/material";
+import propTypes from "prop-types";
+
 
 
 
@@ -40,5 +42,8 @@ const Form = ({title, handleClick}) => {
         </Container>
     );
 };
-
+Form.propTypes = {
+    title: propTypes.string,
+    handleClick: propTypes.func
+}
 export default Form;

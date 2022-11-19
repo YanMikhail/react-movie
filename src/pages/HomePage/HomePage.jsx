@@ -7,9 +7,11 @@ import { Link as NavLink } from "react-router-dom";
 import {
     CircularProgress,
     Pagination,
-    TextField,
 } from "@mui/material";
 import {useDebounce} from "../../hooks/useDebounce";
+import Search from "../../components/Search/Search";
+import {useDispatch} from "react-redux";
+import {addHistory} from "../../store/historySlice";
 
 
 
@@ -17,31 +19,29 @@ const HomePage = () => {
     const [page, setPage] = useState(1)
     const [search, setSearch] = useState('')
     const debounced = useDebounce(search)
-    const {isLoading, isError, data } = useGetAllMoviesQuery(page)
+    const dispatch = useDispatch()
+    const {isLoading, data } = useGetAllMoviesQuery(page)
     const {data: searchData} = useGetMoviesByQueryQuery(debounced, {
         skip: debounced.length < 2
     })
-
+    const handleAddToHistory = () => {
+        dispatch(addHistory(search))
+    }
 
     return (
         <>
             <div className={s.search}>
-            <TextField
-                fullWidth
-                label="Search"
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-            />
-            {searchData && <div className={s.dropdown}>
-                <ul >
-                    {searchData?.map(movie => (
-                        <NavLink key={movie.id}  to={`/movie/${movie.id}`}>
-                            <li className={s.movies}>{movie.title}</li>
-                        </NavLink>
-                    ))}
-                </ul>
-            </div>}
-        </div>
+                <Search search={search} setSearch={setSearch} handleAddToHistory={handleAddToHistory}/>
+                {searchData && <div className={s.dropdown}>
+                    <ul >
+                        {searchData?.map(movie => (
+                            <NavLink key={movie.id}  to={`/movie/${movie.id}`}>
+                                <li className={s.movies}>{movie.title}</li>
+                            </NavLink>
+                        ))}
+                    </ul>
+                </div>}
+            </div>
             <div className={s.cards}>
                 { isLoading && <CircularProgress sx={{mx: 'auto' }}/> }
                 {data?.results.map(movie => (

@@ -3,9 +3,6 @@ import './App.css'
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/Login/LoginPage";
 import RegisterPage from "./pages/Register/RegisterPage";
-// import Favourites from "./pages/Favourites/Favourites";
-// import History from "./pages/History/History";
-// import MoviePage from "./pages/MoviePage/MoviePage";
 import Layout from "./components/Layout/Layout";
 import {RequireAuth} from "./hoc/RequireAuth";
 import {lazy, Suspense } from "react";
@@ -13,6 +10,7 @@ import {CircularProgress} from "@mui/material";
 const Favourites = lazy(() => import('./pages/Favourites/Favourites'));
 const History = lazy(() => import('./pages/History/History'));
 const MoviePage = lazy(() => import('./pages/MoviePage/MoviePage'));
+const SearchPage = lazy(() => import('./pages/SearchPage/SearchPage'));
 
 
 function App() {
@@ -24,6 +22,7 @@ function App() {
             <Route index element={<HomePage/>}/>
             <Route path='login' element={<LoginPage/>}/>
             <Route path='register' element={<RegisterPage/>}/>
+            <Route path='/search/:query' element={<SearchPage/>}/>
             <Route path='favourites' element={
               <RequireAuth>
                 <Favourites/>
@@ -34,6 +33,7 @@ function App() {
                 <History/>
               </RequireAuth>
             }/>
+
             <Route path='/movie/:id' element={<MoviePage/>}/>
           </Route>
         </Routes>

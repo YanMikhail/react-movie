@@ -11,7 +11,7 @@ export const movieApi = createApi({
             url: `movie/now_playing?`,
             method: 'GET',
             params: {
-                api_key: '483698be2836c105d00456d472854450',
+                api_key: process.env.REACT_APP_MOVIE_DB_API_KEY,
                 page
             },
             contentType: "application/json",
@@ -22,7 +22,7 @@ export const movieApi = createApi({
                 url: 'search/movie?',
                 method: 'GET',
                 params: {
-                    api_key: '483698be2836c105d00456d472854450',
+                    api_key: process.env.REACT_APP_MOVIE_DB_API_KEY,
                     query,
                 },
                 contentType: "application/json",
@@ -36,7 +36,7 @@ export const movieApi = createApi({
                 url: `movie/${id}?`,
                 method: 'GET',
                 params: {
-                    api_key: '483698be2836c105d00456d472854450',
+                    api_key: process.env.REACT_APP_MOVIE_DB_API_KEY,
                 },
                 contentType: "application/json",
             })
