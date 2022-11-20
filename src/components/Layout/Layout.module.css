@@ -1,0 +1,43 @@
+.header {
+  height: 60px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  height: 100%;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  gap: 30px;
+}
+
+.footer {
+  background: rgb(3, 37, 65);
+  height: 50px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blue {
+  background: rgb(3, 37, 65);
+}
+
+.dark {
+  background: #1A1A1D;
+}
+.gray {
+  background: #E0E0E0;
+}
+.light {
+  background: #fff;
+}

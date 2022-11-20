@@ -1,0 +1,6 @@
+.cards {
+    display: grid;
+    justify-content: start;
+    grid-template-columns: auto auto auto auto;
+    gap: 40px;
+}
