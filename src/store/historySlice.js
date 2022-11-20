@@ -11,9 +11,15 @@ export const historySlice = createSlice({
     reducers: {
         addHistory: (state, action) => {
             state.history.push(action.payload)
+        },
+        addAllHistory: (state, action) => {
+            state.history = action.payload
+        },
+        clearHistory: (state) => {
+            state.history = []
         }
     }
 })
 
-export const { addHistory } = historySlice.actions
+export const { addHistory, addAllHistory,  clearHistory} = historySlice.actions
 export const history = historySlice.reducer

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addFavourite, removeFavourite} from "../../store/favouriteSlice";
 import heart from '../../assets/images/heart.png'
@@ -12,10 +12,14 @@ import {useNavigate} from "react-router-dom";
 
 const MovieCards = ({movie}) => {
     const dispatch = useDispatch()
-    const {favourites} = useSelector(state => state.favourite)
-    const [isFav, setIsFav] = useState(favourites.find(f => f.id === movie.id))
+    const [isFav, setIsFav] = useState(false)
     const navigate = useNavigate()
     const {isAuth} = useAuth()
+    const { favourites } = useSelector(state => state.favourite)
+
+    useEffect(()=> {
+        setIsFav(()=> !!favourites.find(f => f.id === movie.id))
+    }, [favourites])
 
     const addToFavourite = (event) => {
         event.preventDefault()

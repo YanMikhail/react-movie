@@ -10,14 +10,20 @@ export const favouriteSlice = createSlice({
     name: 'favourite',
     initialState,
     reducers: {
+        addAllFavourites(state, action) {
+            state.favourites = action.payload
+        },
         addFavourite(state, action) {
             state.favourites.push(action.payload)
         },
         removeFavourite(state, action) {
             state.favourites = state.favourites.filter(movie => movie.id !== action.payload.id)
+        },
+        clearAllFavourite(state) {
+            state.favourites = []
         }
     }
 })
 
-export const { addFavourite, removeFavourite } = favouriteSlice.actions
+export const { addFavourite, removeFavourite, clearAllFavourite, addAllFavourites } = favouriteSlice.actions
 export const favourite = favouriteSlice.reducer

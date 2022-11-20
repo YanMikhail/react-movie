@@ -1,21 +1,34 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Link, NavLink, Outlet} from "react-router-dom";
-import BrandLogo from '../../assets/images/react-movie-logo.svg';
-import s from './Layout.module.css'
 import {Button, Container, FormControlLabel, Switch} from "@mui/material";
 import {useAuth} from "../../hooks/useAuth";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {removeUser} from "../../store/userSlice";
 import {ThemeContext} from "../../store/themeContext";
 import {ErrorBoundary} from "../ErrorBoundary/ErrorBoundary";
+import BrandLogo from '../../assets/images/react-movie-logo.svg';
+import s from './Layout.module.css'
+import { clearAllFavourite} from "../../store/favouriteSlice";
+import {clearHistory} from "../../store/historySlice";
+
 
 const Layout = () => {
     const dispatch = useDispatch()
+    const {favourites} = useSelector(state => state.favourite)
+    const {history} = useSelector(state => state.history)
     const {isAuth, email} = useAuth()
+    const {dark, toggleTheme} = useContext(ThemeContext)
     const logOut = () => {
         dispatch(removeUser())
     }
-    const {dark, toggleTheme} = useContext(ThemeContext)
+
+    useEffect(()=> {
+        if(!isAuth && favourites?.length && history?.length){
+            dispatch(clearAllFavourite())
+            dispatch(clearHistory())
+        }
+    }, [isAuth])
+
     return (
         <>
         <header className={`${s.header} ${dark ? s.dark : s.blue}`}>

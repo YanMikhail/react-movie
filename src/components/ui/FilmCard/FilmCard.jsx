@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types'
-import s from './FilmCard.module.css'
 import {Link} from "react-router-dom";
 import poster from '../../../assets/images/poster.jpg'
+import s from './FilmCard.module.css'
 
 
 const FilmCard = ({movie, likeHandler, like}) => {
