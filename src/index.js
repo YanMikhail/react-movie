@@ -8,6 +8,7 @@ import {store} from "./store";
 import './firebase'
 import {ThemeProvider} from "./store/themeContext";
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

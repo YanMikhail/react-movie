@@ -1,3 +1,4 @@
+
 import {Route, Routes} from "react-router-dom";
 import './App.css'
 import HomePage from "./pages/HomePage/HomePage";
@@ -11,6 +12,7 @@ const Favourites = lazy(() => import('./pages/Favourites/Favourites'));
 const History = lazy(() => import('./pages/History/History'));
 const MoviePage = lazy(() => import('./pages/MoviePage/MoviePage'));
 const SearchPage = lazy(() => import('./pages/SearchPage/SearchPage'));
+
 
 
 function App() {
